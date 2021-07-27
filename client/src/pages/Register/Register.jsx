@@ -21,6 +21,7 @@ export default function Register() {
       });
       res.data && window.location.replace("/login");
     } catch (err) {
+  
       setError(true);
     }
   };
@@ -55,7 +56,7 @@ export default function Register() {
         </button>
       </form>
       <button className="registerLoginButton">
-        <Link className="link" to="/login">
+        <Link className="Linkcolor" to="/login">
           Login
         </Link>
       </button>

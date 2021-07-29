@@ -1,24 +1,25 @@
 import React from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {useState} from "react"
 import './Login.css'
 import { useDispatch } from "react-redux"
 //import {addUser} from "../../redux/actions/usersAction"
- import {loginUser} from "../../utiles/index"
+import {loginUser} from "../../utiles/index"
 import axios from 'axios';
+
 
 function Login() {
     const [loginData, setLoginData] = useState({})
   const handleChange=(e)=>{
         setLoginData({...loginData,[e.target.name]:e.target.value})
     }
-    //const history = useHistory();
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
 
 const handleSubmit= (e)=> {
-        e.preventDefault();
+   e.preventDefault();
+
         axios.post("/api/auth/login",loginData)
-              .then((res)=>{loginUser(res.data.token);alert(res.data.msg)})
+              .then((res)=>{loginUser(res.data.data);alert(res.data.msg)})
                .catch((err)=>alert(err.res.data.msg))
                console.log(loginData)
     }

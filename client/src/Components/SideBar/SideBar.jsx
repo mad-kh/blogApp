@@ -6,9 +6,12 @@ import { useDispatch, useSelector} from "react-redux"
 
 import {fetchCats} from "../../redux/actions/catsAction"
 export default function Sidebar() {
-  // eslint-disable-next-line  
   const dispatch = useDispatch()
+    // eslint-disable-next-line  
+
 useEffect(() => {
+    // eslint-disable-next-line  
+
  dispatch( fetchCats())
      
 

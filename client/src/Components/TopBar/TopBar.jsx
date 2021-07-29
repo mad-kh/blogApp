@@ -1,19 +1,21 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom";
 import "./TopBar.css";
+import { useDispatch} from "react-redux"
 import {logOut } from "../../utiles"
-import { useDispatch, useSelector} from "react-redux"
-import { addUser, getUser } from "../../redux/actions/usersAction";
+//import { addUser, getUser } from "../../redux/actions/usersAction";
 // import {deleteUser} from "../../redux/actions/usersAction"
 export default function TopBar() {
  // const user= useSelector(state => state.usersReducer.users)
-  const dispatch = useDispatch()
-const user=false
+  //const dispatch = useDispatch()
+   const user=JSON.parse(localStorage.getItem('user'));
+
 
 const history=useHistory()
-  const handlelogOut= ()=> {
-  logOut( ) 
-
+  const handlelogOut= (e)=> {
+    e.preventDefault();
+logOut()
+history.push("/register")
       }
 
   return (

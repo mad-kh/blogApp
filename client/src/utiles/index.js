@@ -1,10 +1,7 @@
-export function loginUser (token){
-    localStorage.setItem("jwt",token)
+
+export function loginUser (user){
+    localStorage.setItem("user", JSON.stringify(user))
 }
-export function logOut(token) {
-    localStorage.clear("jwt",token)
-}
-export function getUsers(token) {
-    localStorage.getItem("jwt",token)
-    
-}
+export function logOut(user) {
+     localStorage.clear("user",user)
+ }

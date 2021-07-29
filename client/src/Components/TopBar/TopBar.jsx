@@ -1,9 +1,21 @@
 import React from "react"
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./TopBar.css";
-
+import {logOut } from "../../utiles"
+import { useDispatch, useSelector} from "react-redux"
+import { addUser, getUser } from "../../redux/actions/usersAction";
+// import {deleteUser} from "../../redux/actions/usersAction"
 export default function TopBar() {
-  const user = false;
+ // const user= useSelector(state => state.usersReducer.users)
+  const dispatch = useDispatch()
+const user=false
+
+const history=useHistory()
+  const handlelogOut= ()=> {
+  logOut( ) 
+
+      }
+
   return (
     <div className="top">
       <div className="topLeft">
@@ -26,7 +38,7 @@ export default function TopBar() {
               WRITE
             </Link>
           </li>
-          <li className="topListItem" >
+          <li className="topListItem" onClick={handlelogOut}>
           {user && "LOGOUT"}
         </li>
         </ul>

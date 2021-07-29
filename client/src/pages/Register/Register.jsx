@@ -1,8 +1,9 @@
-import React from 'react';
-import './Register.css'
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import axios from "axios"
+import "./Register.css";
+
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +12,6 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setError(false);
     try {
       const res = await axios.post("/api/auth/register", {
@@ -21,11 +21,9 @@ export default function Register() {
       });
       res.data && window.location.replace("/login");
     } catch (err) {
-  
       setError(true);
     }
   };
-  
   return (
     <div className="register">
       <span className="registerTitle">Register</span>
@@ -56,11 +54,12 @@ export default function Register() {
         </button>
       </form>
       <button className="registerLoginButton">
-        <Link className="Linkcolor" to="/login">
+        <Link className="link" to="/login">
           Login
         </Link>
       </button>
-      {error && <span style={{color:"red", marginTop:"10px"}}>User is already exist!</span>}
+      {error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}
+
     </div>
   );
 }

@@ -2,16 +2,28 @@
 //import './App.css';
 import TopBar from './Components/TopBar/TopBar';
 import Home from './pages/Home/Home'
-
+import { useDispatch ,useSelector} from "react-redux"
+import {useEffect} from "react"
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Setting from "./pages/Setting/Setting";
 import Single from "./pages/Single/Single";
 import Write from "./pages/Write/Write";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import { getUsers } from './utiles';
+import {addUser, getUser} from "./redux/actions/usersAction"
+// import usersReducer from "./redux/reducers/usersReducer"
 function App() {
-  const currentUser = false;
+  const dispatch = useDispatch()
+  // const [user, setUser] = useState({})
+  useEffect(() => {
+    getUsers(dispatch(addUser() ))
+        // eslint-disable-next-line
+        () 
+    }, []);
+ const user= useSelector(state => state.usersReducer.users)
+console.log("user",user)
+
   return (
     <Router>
     <TopBar/>
@@ -23,15 +35,15 @@ function App() {
     <Home />
   </Route>
   <Route path="/register">
-    {currentUser ? <Home/> : <Register />}
+    {user ? <Home/> : <Register />}
   </Route>
-  <Route path="/login">{currentUser ? <Home/> : <Login />}</Route>
+  <Route path="/login">{user ? <Home/> : <Login />}</Route>
   <Route path="/post/:id">
     <Single />
   </Route>
-  <Route path="/write">{currentUser ? <Write /> : <Login />}</Route>
+  <Route path="/write">{user ? <Write /> : <Login />}</Route>
   <Route path="/settings">
-    {currentUser ? <Setting/> : <Login />}
+    {user ? <Setting/> : <Login />}
   </Route>
     
     </Switch>

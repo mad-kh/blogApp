@@ -5,9 +5,9 @@ export  const fetchPosts =  (search) => (dispatch) => {
     axios
         .get("/api/posts/"+search)
         .then((response) =>
+         // eslint-disable-next-line
         dispatch({ type: GET_POSTS, payload:response.data }
-        
-
+    
             )
         )
         .catch((err) => console.log(err));

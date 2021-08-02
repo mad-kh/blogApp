@@ -14,8 +14,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import usersReducer from "./redux/reducers/usersReducer"
 function App() {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log("user", user);
-
     return (
         <Router>
             <TopBar />

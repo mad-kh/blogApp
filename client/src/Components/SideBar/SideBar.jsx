@@ -6,14 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchCats } from "../../redux/actions/catsAction";
 export default function Sidebar() {
-    // eslint-disable-next-line
     const dispatch = useDispatch();
     useEffect(() => {
         // eslint-disable-next-line
         dispatch(fetchCats());
     }, []);
     const cats = useSelector((state) => state.categoriesReducer.category);
-    console.log("cat is here", cats);
     return (
         <div className="sidebar">
             <div className="sidebarItem">
@@ -29,9 +27,7 @@ export default function Sidebar() {
                 <ul className="sidebarList">
                     {cats.map((c) => (
                         <Link to={`/?cat=${c.name}`} className="link">
-                            <li className="sidebarListItem" key="i">
-                                {c.name}
-                            </li>
+                            <li className="sidebarListItem">{c.name}</li>
                         </Link>
                     ))}
                 </ul>

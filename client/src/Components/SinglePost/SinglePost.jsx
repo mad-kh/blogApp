@@ -5,20 +5,49 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deletePost, fetchPosts } from "../../redux/actions/postsActions";
+// import {
+//     deletePost,
+//     fetchPosts,
+//     UpdatePosts,
+// } from "../../redux/actions/postsActions";
 export default function SinglePost() {
     const user = JSON.parse(localStorage.getItem("user"));
-    const dispatch = useDispatch();
     const location = useLocation();
     const PF = "http://localhost:5000/images/";
     const path = location.pathname.split("/")[2];
     const [post, setPost] = useState({});
+    const [newPost, setNewPost] = useState({});
     const [updateMode, setUpdateMode] = useState(false);
-    console.log(user.username);
-    console.log(post);
-    // console.log("post.username", post.username);
-    // console.log(post.username === user.username);
-    // console.log(post._id);
+    const dispatch = useDispatch();
+    // useEffect(() => {
+    //     const getPost = async () => {
+    //         await dispatch(fetchPosts(path));
+    //     };
+    //     getPost();
+    // }, [path]);
+    // const post = useSelector((state) => state.postReducer.posts);
+    // console.log("post._id", post._id);
+    // const handleUpdatePost = async () => {
+    //     try {
+    //         await dispatch(
+    //             UpdatePosts({
+    //                 id: post._id,
+    //                 post: post.username,
+    //                 username: user.username,
+    //                 newPost,
+    //             })
+    //         );
+    //         // window.location.reload();
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+    const handleUpdate = () => {
+        setUpdateMode(!updateMode);
+    };
+    const handleChange = (e) => {
+        setNewPost({ ...newPost, [e.target.name]: e.target.value });
+    };
     useEffect(() => {
         const getPost = async () => {
             const res = await axios.get("/api/posts/" + path);
@@ -26,24 +55,30 @@ export default function SinglePost() {
         };
         getPost();
     }, [path]);
-    const handleDelete = (e) => {
-        e.preventDefault();
-        dispatch(
-            deletePost({
-                id: post._id,
-            })
-        );
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`/api/posts/${post._id}`, {
+                data: { username: user.username },
+            });
+            window.location.replace("/");
+        } catch (err) {
+            console.log(err);
+        }
     };
-    // const handleUpdate = async () => {
-    //     try {
-    //         await axios.put(`//api/posts/${post._id}`, {
-    //             username: user.username,
-    //             title,
-    //             desc,
-    //         });
-    //         setUpdateMode(false);
-    //     } catch (err) {}
-    // };
+    console.log(newPost, "lkjhgf");
+    const handleUpdatePost = async () => {
+        try {
+            await axios.put(`/api/posts/${post._id}`, {
+                username: user.username,
+                title: newPost.title,
+                desc: newPost.desc,
+            });
+            window.location.reload();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     return (
         <div className="singlePost">
             <div className="singlePostWrapper">
@@ -54,22 +89,33 @@ export default function SinglePost() {
                         className="singlePostImg"
                     />
                 )}
+                {updateMode ? (
+                    <input
+                        name="title"
+                        type="text"
+                        Value={post.title}
+                        className="singlePostTitleInput"
+                        autoFocus
+                        onChange={handleChange}
+                    />
+                ) : (
+                    <h1 className="singlePostTitle">
+                        {post.title}
+                        {post.username === user.username && (
+                            <div className="singlePostEdit">
+                                <i
+                                    className="singlePostIcon far fa-edit"
+                                    onClick={handleUpdate}
+                                ></i>
+                                <i
+                                    className="singlePostIcon far fa-trash-alt"
+                                    onClick={handleDelete}
+                                ></i>
+                            </div>
+                        )}
+                    </h1>
+                )}
 
-                <h1 className="singlePostTitle">
-                    {post.title}
-                    {post.username === user.username && (
-                        <div className="singlePostEdit">
-                            <i
-                                className="singlePostIcon far fa-edit"
-                                // onClick={handleUpdate}
-                            ></i>
-                            <i
-                                className="singlePostIcon far fa-trash-alt"
-                                onClick={handleDelete}
-                            ></i>
-                        </div>
-                    )}
-                </h1>
                 <div className="singlePostInfo">
                     <span className="singlePostAuthor">
                         <p>
@@ -84,7 +130,24 @@ export default function SinglePost() {
                     </span>
                     <span>{new Date(post.createdAt).toDateString()}</span>
                 </div>
-                <p className="singlePostDesc">{post.desc}</p>
+                {updateMode ? (
+                    <textarea
+                        name="desc"
+                        className="singlePostDescInput"
+                        value={post.desc}
+                        onChange={handleChange}
+                    />
+                ) : (
+                    <p className="singlePostDesc">{post.desc}</p>
+                )}
+                {updateMode && (
+                    <button
+                        className="singlePostButton"
+                        onClick={handleUpdatePost}
+                    >
+                        Update
+                    </button>
+                )}
             </div>
         </div>
     );

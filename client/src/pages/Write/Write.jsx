@@ -2,15 +2,17 @@ import React from "react";
 import "./Write.css";
 import { useState } from "react";
 import axios from "axios";
-// import { useDispatch } from "react-redux";
-//import { addPost } from "../../redux/actions/postsActions";
+import { useDispatch } from "react-redux";
+import { addPost } from "../../redux/actions/postsActions";
+import { useLocation } from "react-router";
 function Write() {
     const user = JSON.parse(localStorage.getItem("user"));
-
+    const { pathname } = useLocation();
+    console.log(pathname, "fg");
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [file, setFile] = useState(null);
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,16 +33,18 @@ function Write() {
                 console.log(err);
             }
         }
+        // try {
+        //     const res = await axios.post("/api/posts/addPost", newPost);
+        //     window.location.replace("/post/" + res.data._id);
+        // } catch (err) {
+        //     console.log(err);
+        // }
         try {
-            const res = await axios.post("/api/posts/addPost", newPost);
-            window.location.replace("/post/" + res.data._id);
-        } catch (err) {
-            console.log(err);
-        }
-
-        // const res = dispatch(addPost({ username: user.username, title, desc }));
-        // // window.location.replace("/post/" + res.data._id);
-        // console.log(res);
+            const res = dispatch(addPost(newPost));
+            console.log("res", res);
+            window.location.replace("/");
+            console.log(res);
+        } catch (err) {}
     };
 
     return (

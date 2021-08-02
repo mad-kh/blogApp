@@ -1,15 +1,15 @@
-import {GET_USER}  from '../constants/action-types'
+import { GET_USER } from "../constants/action-types";
 
 const initialState = {
-    users:[],
+    users: [],
 };
-const userstReducer =(state=initialState,action)=>{
-     
-    const {type,payload}=action
+const userstReducer = (state = initialState, action) => {
+    const { type, payload } = action;
     switch (type) {
         case GET_USER:
-        return {...state,users:payload};
+            return { ...state, users: payload };
         default:
             return state;
-    }}
-    export default userstReducer
+    }
+};
+export default userstReducer;

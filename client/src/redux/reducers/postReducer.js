@@ -1,18 +1,16 @@
-import {GET_POSTS}  from '../constants/action-types'
+import { GET_POSTS } from "../constants/action-types";
 
 const initialState = {
-    posts:[],
+    posts: [],
 };
-const postReducer =(state=initialState,action)=>{
-     
-    const {type,payload}=action
+const postReducer = (state = initialState, action) => {
+    const { type, payload } = action;
     switch (type) {
-        case GET_POSTS :
-        return {...state,posts:payload};
+        case GET_POSTS:
+            return { ...state, posts: payload };
         default:
             return state;
-          
     }
-}
+};
 
-export default postReducer
+export default postReducer;

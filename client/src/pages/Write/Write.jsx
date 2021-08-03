@@ -12,6 +12,7 @@ function Write() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [file, setFile] = useState(null);
+    const [categories, setCategories] = useState("");
     const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
@@ -20,6 +21,7 @@ function Write() {
             username: user.username,
             title,
             desc,
+            categories,
         };
         if (file) {
             const data = new FormData();
@@ -61,6 +63,7 @@ function Write() {
                     <label htmlFor="fileInput">
                         <i className="writeIcon fas fa-plus"></i>
                     </label>
+
                     <input
                         type="file"
                         id="fileInput"
@@ -75,6 +78,15 @@ function Write() {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
+                <div className="writeCat">
+                    <input
+                        type="texte"
+                        placeholder="Category"
+                        className="writeInput"
+                        autoFocus={true}
+                        onChange={(e) => setCategories(e.target.value)}
+                    />
+                </div>
                 <div className="writeFormGroup">
                     <textarea
                         placeholder="Tell your story..."
@@ -83,6 +95,7 @@ function Write() {
                         onChange={(e) => setDesc(e.target.value)}
                     ></textarea>
                 </div>
+
                 <button className="writeSubmit" onClick={handleSubmit}>
                     Publish
                 </button>

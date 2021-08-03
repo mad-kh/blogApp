@@ -5,6 +5,8 @@ import "./Setting.css";
 import SideBar from "../../Components/SideBar/SideBar";
 import { useState } from "react";
 // import { UpdateUser } from "../../redux/actions/usersAction";
+// import { deleteUser } from "../../utiles";
+
 export default function Settings() {
     // const [Update, setUpdate] = useState({});
     // const handleChange = (e) => {
@@ -34,16 +36,22 @@ export default function Settings() {
             data.append("file", file);
             updatedUser.profilePic = filename;
             try {
-                await axios.post("/upload", data);
-            } catch (err) {}
+                await axios.post("/api/upload", data);
+            } catch (err) {
+                console.log(err);
+            }
         }
         try {
             const res = await axios.put("/api/users/" + user._id, updatedUser);
             setSuccess(true);
-            dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
+            dispatch({ payload: res.data });
         } catch (err) {
-            dispatch({ type: "UPDATE_FAILURE" });
+            console.log(err);
         }
+    };
+    const handleDelete = async () => {
+        JSON.parse(localStorage.removeItem("user"));
+        window.location.replace("/register");
     };
     return (
         <div className="settings">
@@ -52,7 +60,13 @@ export default function Settings() {
                     <span className="settingsUpdateTitle">
                         Update Your Account
                     </span>
-                    <span className="settingsDeleteTitle">Delete Account</span>
+
+                    <span
+                        className="settingsDeleteTitle"
+                        onClick={handleDelete}
+                    >
+                        LOGOUT
+                    </span>
                 </div>
                 <form className="settingsForm" onSubmit={handleSubmit}>
                     <label>Profile Picture</label>
@@ -63,7 +77,7 @@ export default function Settings() {
                                     ? URL.createObjectURL(file)
                                     : PF + user.profilePic
                             }
-                            alt=""
+                            alt={user.username}
                         />
                         <label htmlFor="fileInput">
                             <i className="settingsPPIcon far fa-user-circle"></i>
@@ -77,19 +91,23 @@ export default function Settings() {
                     </div>
                     <label>Username</label>
                     <input
+                        defaultValue={user.username}
                         type="text"
                         placeholder={user.username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <label>Email</label>
                     <input
+                        defaultValue={user.email}
                         type="email"
                         placeholder={user.email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <label>Password</label>
                     <input
+                        defaultValue={user.password}
                         type="password"
+                        placeholder="password...."
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <button className="settingsSubmit" type="submit">

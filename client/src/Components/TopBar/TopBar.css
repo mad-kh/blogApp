@@ -1,6 +1,16 @@
+.navbar-logo {
+    color: lightcoral;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+}
 .top {
     width: 100%;
-    height: 50px;
+    height: 80px;
     background-color: white;
     position: sticky;
     top: 0;
@@ -21,8 +31,11 @@
 .topIcon {
     font-size: 20px;
     margin-right: 10px;
-    color: coral;
+    color: rgb(231, 166, 166);
     cursor: pointer;
+}
+.topIcon:hover {
+    color: coral;
 }
 
 .topCenter {
@@ -39,7 +52,7 @@
 
 .topListItem {
     margin-right: 20px;
-    font-size: 18px;
+    font-size: 1.2rem;
     font-weight: 300;
     cursor: pointer;
 }
@@ -59,12 +72,23 @@
 
 .topSearchIcon {
     font-size: 18px;
-    color: coral;
+    color: rgb(231, 166, 166);
     cursor: pointer;
 }
+.topSearchIcon:hover {
+    color: tomato;
+}
 .link {
-    color: violet;
+    color: rgb(231, 166, 166);
 }
 .link:hover {
+    color: tomato;
+}
+.Link {
+    color: rgb(231, 166, 166);
+    margin-left: 20px;
+    font-size: 2rem;
+}
+.Link:hover {
     color: tomato;
 }

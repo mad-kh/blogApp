@@ -7,12 +7,18 @@ export default function Header() {
                 <span className="headerTitleSm">Blog</span>
                 <span className="headerTitleLg">TABA'3NI</span>
             </div>
-
-            <img
-                className="headerImg"
-                src="https://i.pinimg.com/564x/fe/0d/b2/fe0db23957c2c7cd654038b3a92ba643.jpg"
-                alt=""
-            />
+            <div className="headerImgs">
+                <img
+                    className="headerImg"
+                    src="https://image.freepik.com/free-photo/white-notebook-with-wooden-nib-pale-brown-envelope-with-brown-thread-branch-white-background_23-2148296148.jpg"
+                    alt=""
+                />
+                <img
+                    className="headerImg"
+                    src="https://i.pinimg.com/236x/df/7f/4c/df7f4c51df5edae3e9bf78fef81f4000.jpg"
+                    alt=""
+                />
+            </div>
         </div>
     );
 }

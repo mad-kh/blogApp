@@ -17,7 +17,7 @@ export default function Sidebar() {
             <div className="sidebarItem">
                 <span className="sidebarTitle">ABOUT ME</span>
                 <img
-                    src="https://sigmacorporation.pro/uploads/img/129.jpeg"
+                    src="https://i.pinimg.com/564x/8a/2f/bb/8a2fbb0cd4f64fb8360dbed799c78e99.jpg"
                     alt=""
                 />
                 <p></p>
@@ -34,6 +34,7 @@ export default function Sidebar() {
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">FOLLOW US</span>
+                <i class="fas fa-feather"></i>
                 <div className="sidebarSocial">
                     <i className="sidebarIcon fab fa-facebook-square"></i>
                     <i className="sidebarIcon fab fa-instagram-square"></i>

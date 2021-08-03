@@ -22,7 +22,9 @@ function Login() {
                 loginUser(res.data.data);
                 window.location.replace("/");
             })
-            .catch((err) => alert(err.res.data.msg));
+            .catch((err) => {
+                alert("somthing is wrong");
+            });
     };
 
     return (

@@ -1,26 +1,26 @@
 .write {
     padding-top: 50px;
-  }
-  
-  .writeImg {
+}
+
+.writeImg {
     margin-left: 150px;
     width: 70vw;
     height: 250px;
     border-radius: 10px;
     object-fit: cover;
-  }
-  
-  .writeForm {
+}
+
+.writeForm {
     position: relative;
-  }
-  
-  .writeFormGroup {
+}
+
+.writeFormGroup {
     margin-left: 150px;
     display: flex;
     align-items: center;
-  }
-  
-  .writeIcon {
+}
+
+.writeIcon {
     width: 25px;
     height: 25px;
     font-size: 20px;
@@ -31,32 +31,32 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  }
-  
-  .writeInput {
+}
+
+.writeInput {
     font-size: 30px;
     border: none;
     padding: 20px;
     width: 70vw;
-  }
-  
-  .writeInput::placeholder {
+}
+
+.writeInput::placeholder {
     color: rgb(189, 185, 185);
     font-weight: 400;
-  }
-  
-  .writeInput:focus {
+}
+
+.writeInput:focus {
     outline-style: none;
-  }
-  
-  .writeText {
+}
+
+.writeText {
     width: 70vw;
     height: 100vh;
     font-family: inherit;
     font-size: 20px;
-  }
-  
-  .writeSubmit {
+}
+
+.writeSubmit {
     position: absolute;
     top: 20px;
     right: 50px;
@@ -69,4 +69,12 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-  }
+}
+.writeCat {
+    display: flex;
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+    margin-left: 150px;
+}

@@ -33,3 +33,9 @@ export const UpdateUser = (payload) => (dispatch) => {
         .then(() => dispatch(getUser()))
         .catch((err) => console.log(err));
 };
+export const deleteUser = (payload) => (dispatch) => {
+    axios
+        .put(`/api/users/${payload.id}`, payload.username)
+        .then(() => dispatch(getUser()))
+        .catch((err) => console.log(err));
+};

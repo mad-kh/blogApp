@@ -22,6 +22,10 @@ export default function TopBar() {
 
     return (
         <div className="top">
+            <Link to="/" className="navbar-logo" className="Link">
+                TABA3'NI...
+                <i class="fas fa-feather-alt"></i>
+            </Link>
             <div className="topLeft">
                 <i className="topIcon fab fa-facebook-square"></i>
                 <i className="topIcon fab fa-instagram-square"></i>
@@ -35,8 +39,12 @@ export default function TopBar() {
                             HOME
                         </Link>
                     </li>
-                    <li className="topListItem">ABOUT</li>
-                    <li className="topListItem">CONTACT</li>
+                    <Link className="link" to="About">
+                        <li className="topListItem">ABOUT</li>
+                    </Link>
+                    <Link className="link" to="Contact">
+                        <li className="topListItem">CONTACT</li>
+                    </Link>
                     <li className="topListItem">
                         <Link className="link" to="/write">
                             WRITE

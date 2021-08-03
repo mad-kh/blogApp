@@ -65,13 +65,14 @@ export default function SinglePost() {
             console.log(err);
         }
     };
-    console.log(newPost, "lkjhgf");
+    console.log(post, "lkjhgf");
     const handleUpdatePost = async () => {
         try {
             await axios.put(`/api/posts/${post._id}`, {
                 username: user.username,
                 title: newPost.title,
                 desc: newPost.desc,
+                category: newPost.categories,
             });
             window.location.reload();
         } catch (err) {
@@ -114,6 +115,18 @@ export default function SinglePost() {
                             </div>
                         )}
                     </h1>
+                )}
+                {updateMode ? (
+                    <input
+                        name="categories"
+                        type="text"
+                        Value={post.categories}
+                        className="singlePostTitleInput"
+                        autoFocus
+                        onChange={handleChange}
+                    />
+                ) : (
+                    <p className="singlePostDesc">{post.categories}</p>
                 )}
 
                 <div className="singlePostInfo">

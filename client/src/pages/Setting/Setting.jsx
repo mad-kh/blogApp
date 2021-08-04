@@ -19,6 +19,7 @@ export default function Settings() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
+    const [setting, setSetting] = useState(false);
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -53,80 +54,87 @@ export default function Settings() {
         JSON.parse(localStorage.removeItem("user"));
         window.location.replace("/register");
     };
+    const handleSetting = () => {
+        setSetting(!setting);
+    };
     return (
         <div className="settings">
-            <div className="settingsWrapper">
-                <div className="settingsTitle">
-                    <span className="settingsUpdateTitle">
-                        Update Your Account
-                    </span>
-
-                    <span
-                        className="settingsDeleteTitle"
-                        onClick={handleDelete}
-                    >
-                        LOGOUT
-                    </span>
-                </div>
-                <form className="settingsForm" onSubmit={handleSubmit}>
-                    <label>Profile Picture</label>
-                    <div className="settingsPP">
-                        <img
-                            src={
-                                file
-                                    ? URL.createObjectURL(file)
-                                    : PF + user.profilePic
-                            }
-                            alt={user.username}
-                        />
-                        <label htmlFor="fileInput">
-                            <i className="settingsPPIcon far fa-user-circle"></i>
-                        </label>
-                        <input
-                            type="file"
-                            id="fileInput"
-                            style={{ display: "none" }}
-                            onChange={(e) => setFile(e.target.files[0])}
-                        />
-                    </div>
-                    <label>Username</label>
-                    <input
-                        defaultValue={user.username}
-                        type="text"
-                        placeholder={user.username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <label>Email</label>
-                    <input
-                        defaultValue={user.email}
-                        type="email"
-                        placeholder={user.email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label>Password</label>
-                    <input
-                        defaultValue={user.password}
-                        type="password"
-                        placeholder="password...."
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button className="settingsSubmit" type="submit">
-                        Update
-                    </button>
-                    {success && (
-                        <span
-                            style={{
-                                color: "green",
-                                textAlign: "center",
-                                marginTop: "20px",
-                            }}
-                        >
-                            Profile updated...
+            <i class="fas fa-user-cog write" onClick={handleSetting}></i>
+            {setting ? (
+                <div className="settingsWrapper">
+                    <div className="settingsTitle">
+                        <span className="settingsUpdateTitle">
+                            Update Your Account
                         </span>
-                    )}
-                </form>
-            </div>
-            <SideBar />
+
+                        <span
+                            className="settingsDeleteTitle"
+                            onClick={handleDelete}
+                        >
+                            LOGOUT
+                        </span>
+                    </div>
+                    <form className="settingsForm" onSubmit={handleSubmit}>
+                        <label>Profile Picture</label>
+                        <div className="settingsPP">
+                            <img
+                                src={
+                                    file
+                                        ? URL.createObjectURL(file)
+                                        : PF + user.profilePic
+                                }
+                                alt={user.username}
+                            />
+                            <label htmlFor="fileInput">
+                                <i className="settingsPPIcon far fa-user-circle"></i>
+                            </label>
+                            <input
+                                type="file"
+                                id="fileInput"
+                                style={{ display: "none" }}
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                        </div>
+                        <label>Username</label>
+                        <input
+                            defaultValue={user.username}
+                            type="text"
+                            placeholder={user.username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <label>Email</label>
+                        <input
+                            defaultValue={user.email}
+                            type="email"
+                            placeholder={user.email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label>Password</label>
+                        <input
+                            defaultValue={user.password}
+                            type="password"
+                            placeholder="password...."
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <button className="settingsSubmit" type="submit">
+                            Update
+                        </button>
+                        {success && (
+                            <span
+                                style={{
+                                    color: "green",
+                                    textAlign: "center",
+                                    marginTop: "20px",
+                                }}
+                            >
+                                Profile updated...
+                            </span>
+                        )}
+                    </form>
+                </div>
+            ) : (
+                <p className="writep ">Setting your account</p>
+            )}
         </div>
     );
 }

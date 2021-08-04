@@ -4,8 +4,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url("https://www.ionos.fr/digitalguide/fileadmin/DigitalGuide/Teaser/picture-gallery-t.jpg");
+    background: url("https://image.freepik.com/photos-gratuite/fumee-noire-fond-blanc-conception-du-feu_55716-987.jpg");
     background-size: cover;
+    background-color: rgb(236, 231, 229);
 }
 
 .loginTitle {

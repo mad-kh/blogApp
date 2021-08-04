@@ -4,37 +4,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: 
-      url("https://www.jimdo.com/static/7f58e83e14a16db25da8e56995f710b8/62acc/hero.jpg");
+    background: url("https://image.freepik.com/photos-gratuite/fumee-noire-fond-blanc-conception-du-feu_55716-987.jpg");
     background-size: cover;
-  }
-  
-  .registerTitle {
+}
+
+.registerTitle {
     font-size: 50px;
-  }
-  
-  .registerForm {
+}
+
+.registerForm {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-  }
-  
-  .registerForm > label {
+}
+
+.registerForm > label {
     margin: 10px 0;
-  }
-  
-  .registerInput {
+}
+
+.registerInput {
     padding: 10px;
     background-color: white;
     border: none;
     border-radius: 10px;
-  }
-  
-  .registerInput:focus {
+}
+
+.registerInput:focus {
     outline: none;
-  }
-  
-  .registerButton {
+}
+
+.registerButton {
     margin-top: 20px;
     cursor: pointer;
     background-color: teal;
@@ -43,9 +42,9 @@
     border: none;
     border-radius: 10px;
     text-align: center;
-  }
-  
-  .registerLoginButton {
+}
+
+.registerLoginButton {
     position: absolute;
     top: 60px;
     right: 20px;
@@ -55,10 +54,10 @@
     border: none;
     color: white;
     border-radius: 10px;
-  }
-  .Linkcolor{
-    color:lightgoldenrodyellow
-  }
-  .Linkcolor:hover{
-    color:yellow
-  }
+}
+.Linkcolor {
+    color: lightgoldenrodyellow;
+}
+.Linkcolor:hover {
+    color: yellow;
+}

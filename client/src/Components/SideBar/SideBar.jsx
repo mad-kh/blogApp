@@ -15,18 +15,22 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebarItem">
-                <span className="sidebarTitle">ABOUT ME</span>
+                <Link to="/About">
+                    <span className="sidebarTitle">Blog History</span>
+                </Link>
+
                 <img
-                    src="https://i.pinimg.com/564x/8a/2f/bb/8a2fbb0cd4f64fb8360dbed799c78e99.jpg"
+                    src="https://i.etsystatic.com/16037131/r/il/4232f8/2253300976/il_794xN.2253300976_cx34.jpg"
                     alt=""
                 />
+
                 <p></p>
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">CATEGORIES</span>
                 <ul className="sidebarList">
                     {cats.map((c) => (
-                        <Link to={`/?cat=${c.name}`} className="link">
+                        <Link to={`/?cat=${c.name}`} className="Linkcat">
                             <li className="sidebarListItem">{c.name}</li>
                         </Link>
                     ))}

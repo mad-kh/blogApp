@@ -1,12 +1,15 @@
 import React from "react";
-
+import Footer from "../../Components/Footer/Footer";
+import "./About.css";
 const About = () => {
     return (
-        <div>
-            <h1></h1>
-            <p></p>
-            <h1></h1>
-            <p></p>
+        <div className="About">
+            <img
+                className="aboutImg"
+                src="https://image.freepik.com/photos-gratuite/fumee-noire-fond-blanc-conception-du-feu_55716-987.jpg"
+                alt=""
+            />
+            <Footer />
         </div>
     );
 };

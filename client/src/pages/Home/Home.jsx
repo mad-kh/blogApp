@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Header from "../../Components/Header/Header";
 import Posts from "../../Components/Posts/Posts";
 import SideBar from "../../Components/SideBar/SideBar";
+import Footer from "../../Components/Footer/Footer";
 // import {postReducer} from '../../redux/reducers/postReducer'
 // import axios from "axios";
 import "./Home.css";
@@ -34,6 +35,7 @@ function Home() {
                 <Posts posts={posts} />
                 <SideBar />
             </div>
+            <Footer />
         </div>
     );
 }

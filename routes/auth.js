@@ -48,12 +48,17 @@ router.post("/login", (req, res) => {
                                     });
                                 }
                             );
-                        } else res.send({ msg: "wrong password" });
+                        } else {
+                            res.status(400).json({
+                                status: 400,
+                                msg: "wrong password",
+                            });
+                        }
                     }
                 );
             } else {
-                res.status(400).json({
-                    status: 400,
+                res.status(404).json({
+                    status: 404,
                     msg: "user doesn't exist",
                 });
             }

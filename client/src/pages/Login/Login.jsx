@@ -18,12 +18,12 @@ function Login() {
         e.preventDefault();
         axios
             .post("/api/auth/login", loginData)
-            .then((res) => {
-                loginUser(res.data.data);
+            .then((response) => {
+                loginUser(response.data.data);
                 window.location.replace("/");
             })
             .catch((err) => {
-                alert("somthing is wrong");
+                alert(err.response.data.msg);
             });
     };
 

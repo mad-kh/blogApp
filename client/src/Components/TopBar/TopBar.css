@@ -33,6 +33,7 @@
     margin-right: 10px;
     color: rgb(231, 166, 166);
     cursor: pointer;
+    display: flex;
 }
 .topIcon:hover {
     color: coral;

@@ -38,9 +38,9 @@
 .topIcon:hover {
     color: coral;
 }
-
 .topCenter {
     flex: 6;
+    display: flex;
 }
 
 .topList {
@@ -56,6 +56,7 @@
     font-size: 1.2rem;
     font-weight: 300;
     cursor: pointer;
+    display: flex;
 }
 
 .topListItem:hover {
@@ -69,12 +70,14 @@
     object-fit: cover;
     margin-right: 15px;
     cursor: pointer;
+    display: flex;
 }
 
 .topSearchIcon {
     font-size: 18px;
     color: rgb(231, 166, 166);
     cursor: pointer;
+    display: flex;
 }
 .topSearchIcon:hover {
     color: tomato;
@@ -92,4 +95,6 @@
 }
 .Link:hover {
     color: tomato;
+}
+@media screen and (max-width: 768px) {
 }

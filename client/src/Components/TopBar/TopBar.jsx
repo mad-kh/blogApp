@@ -9,7 +9,7 @@ export default function TopBar() {
     // const user= useSelector(state => state.usersReducer.users)
     //const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem("user"));
-
+    const PF = "http://localhost:5000/images/";
     const history = useHistory();
     const handlelogOut = async () => {
         try {
@@ -59,7 +59,11 @@ export default function TopBar() {
             <div className="topRight">
                 {user ? (
                     <Link className="link" to="/settings">
-                        <img className="topImg" src={user.profilePic} alt="" />
+                        <img
+                            className="topImg"
+                            src={PF + user.profilePic}
+                            alt=""
+                        />
                     </Link>
                 ) : (
                     <ul className="topList">

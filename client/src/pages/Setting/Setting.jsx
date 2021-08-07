@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import "./Setting.css";
 import SideBar from "../../Components/SideBar/SideBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { UpdateUser } from "../../redux/actions/usersAction";
 // import { deleteUser } from "../../utiles";
 
@@ -45,7 +45,6 @@ export default function Settings() {
         try {
             const res = await axios.put("/api/users/" + user._id, updatedUser);
             setSuccess(true);
-            dispatch({ payload: res.data });
         } catch (err) {
             console.log(err);
         }
@@ -57,6 +56,10 @@ export default function Settings() {
     const handleSetting = () => {
         setSetting(!setting);
     };
+    useEffect(() => {
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log(user.profilePic);
+    }, [user]);
     return (
         <div className="settings">
             <i class="fas fa-user-cog write" onClick={handleSetting}></i>

@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
+const { extractToken } = require("../middlewares/user");
 
 //REGISTER
 router.post("/register", async (req, res) => {
@@ -66,3 +68,4 @@ router.post("/login", (req, res) => {
         .catch((err) => console.log(err));
 });
 module.exports = router;
+//add post

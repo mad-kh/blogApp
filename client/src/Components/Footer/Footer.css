@@ -24,6 +24,9 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
 }
+.footer-subscription > p:hover {
+    color: tomato;
+}
 
 .footer-subscription-heading {
     margin-bottom: 24px;

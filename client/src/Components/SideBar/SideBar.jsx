@@ -15,14 +15,9 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sidebarItem">
-                <Link to="/About">
-                    <span className="sidebarTitle">Blog History</span>
+                <Link to="/About" className="link">
+                    <span className="sidebarTitle link">Blog History</span>
                 </Link>
-
-                <img
-                    src="https://i.etsystatic.com/16037131/r/il/4232f8/2253300976/il_794xN.2253300976_cx34.jpg"
-                    alt=""
-                />
 
                 <p></p>
             </div>
@@ -38,7 +33,7 @@ export default function Sidebar() {
             </div>
             <div className="sidebarItem">
                 <span className="sidebarTitle">FOLLOW US</span>
-                <i class="fas fa-feather"></i>
+                <i class="fas fa-feather colorIcon"></i>
                 <div className="sidebarSocial">
                     <i className="sidebarIcon fab fa-facebook-square"></i>
                     <i className="sidebarIcon fab fa-instagram-square"></i>

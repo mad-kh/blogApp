@@ -31,9 +31,9 @@ function Home() {
     return (
         <div>
             <Header />
+            <SideBar />
             <div className="home">
                 <Posts posts={posts} />
-                <SideBar />
             </div>
             <Footer />
         </div>

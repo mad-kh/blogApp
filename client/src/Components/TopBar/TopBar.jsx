@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./TopBar.css";
-//import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { logOut } from "../../utiles";
-//import { addUser, getUser } from "../../redux/actions/usersAction";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser } from "../../redux/actions/usersAction";
 // import {deleteUser} from "../../redux/actions/usersAction"
 export default function TopBar() {
     // const user= useSelector(state => state.usersReducer.users)
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem("user"));
     const PF = "http://localhost:5000/images/";
     const history = useHistory();
@@ -19,7 +20,23 @@ export default function TopBar() {
             console.log(err);
         }
     };
-
+    useEffect(() => {
+        dispatch(getUser());
+        // eslint-disable-next-line
+    }, []);
+    const USER = useSelector((state) => state.usersReducer.users);
+    console.log(USER);
+    // const [search, setSearch] = useState(false);
+    // const [userSearch, setUserSearch] = useState("");
+    // const handleSearch = () => {
+    //     setSearch(!search);
+    // };
+    // const getUserSearch = (e) => {
+    //     setUserSearch(e.target.value);
+    // };
+    //  const getPostSearch = (e) => {
+    //      setPostSearch(e.target.value);
+    //  };
     return (
         <div className="top">
             <Link to="/" className="navbar-logo" className="Link">
@@ -79,7 +96,11 @@ export default function TopBar() {
                         </li>
                     </ul>
                 )}
-                <i className="topSearchIcon fas fa-search"></i>
+
+                <i
+                    className="topSearchIcon fas fa-search"
+                    // onClick={handleSearch}
+                ></i>
             </div>
         </div>
     );

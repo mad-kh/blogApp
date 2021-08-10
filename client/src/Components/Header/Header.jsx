@@ -1,22 +1,84 @@
+import React from "react";
 import "./Header.css";
-
+import { Carousel } from "react-bootstrap";
 export default function Header() {
     return (
-        <div className="header">
-            <div className="headerTitles">
-                <span className="headerTitleSm">Blog</span>
-                <span className="headerTitleLg">TABA3'NI</span>
-                <span className="headerPhrase">Create your own World</span>
-            </div>
-            <div className="headerImgs">
-                {" "}
-                <img
-                    className="headerImg"
-                    // src="https://image.freepik.com/free-photo/white-notebook-with-wooden-nib-pale-brown-envelope-with-brown-thread-branch-white-background_23-2148296148.jpg"
-                    src="https://image.freepik.com/photos-gratuite/fumee-noire-fond-blanc-conception-du-feu_55716-987.jpg"
-                    alt=""
-                />
-            </div>
+        <div className="header ">
+            <Carousel>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://nassimahdindar.fr/wp-content/uploads/2019/08/blogging.jpg"
+                        alt="Second slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/fc7cd71c175e52c7b3804df7/fd.jpg"
+                        alt="First slide"
+                    />
+
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/01eb3abe0b2150d4ae922434/tree-pot-decoration-table-living-room_1339-7378.jpg?version="
+                        alt="Third slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/80d3ee0f09025149a3a22ef1/close-up-flower-decoration-tabletop-modern-kitchen_23-2148238623.jpg?version="
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/cb0e383b34b055abb231c283/plane-passing-by-sun-cloudy-day_1286-143.jpg"
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={1000}>
+                    <img
+                        className="d-block w-100 imgStyle"
+                        src="https://images03.nicepage.com/a1389d7bc73adea1e1c1fb7e/05aff8492e425b27862a0912/pexelsphoto1372971.png"
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 style={{ color: "black" }}>Blog</h3>
+                        <h1 style={{ color: "black" }}>TABA3'NI</h1>
+                        <p style={{ color: "black" }}>Create your own World</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
         </div>
     );
 }

@@ -2,8 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import "./Setting.css";
-import SideBar from "../../Components/SideBar/SideBar";
+//import SideBar from "../../Components/SideBar/SideBar";
 import { useState, useEffect } from "react";
+import { Button } from "react-bootstrap";
 // import { UpdateUser } from "../../redux/actions/usersAction";
 // import { deleteUser } from "../../utiles";
 
@@ -23,7 +24,7 @@ export default function Settings() {
     const dispatch = useDispatch();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch({ type: "UPDATE_START" });
+        // dispatch({ type: "UPDATE_START" });
         const updatedUser = {
             userId: user._id,
             username,
@@ -45,19 +46,21 @@ export default function Settings() {
         try {
             const res = await axios.put("/api/users/" + user._id, updatedUser);
             setSuccess(true);
+            window.location.reload();
         } catch (err) {
             console.log(err);
         }
     };
     const handleDelete = async () => {
-        JSON.parse(localStorage.removeItem("user"));
-        window.location.replace("/register");
+        JSON.parse(localStorage.clear("user"));
+        window.location.replace("/");
     };
     const handleSetting = () => {
         setSetting(!setting);
     };
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user));
+
         console.log(user.profilePic);
     }, [user]);
     return (
@@ -69,16 +72,16 @@ export default function Settings() {
                         <span className="settingsUpdateTitle">
                             Update Your Account
                         </span>
-
-                        <span
+                        <Button
+                            variant="outline-danger"
                             className="settingsDeleteTitle"
                             onClick={handleDelete}
                         >
                             LOGOUT
-                        </span>
+                        </Button>
                     </div>
                     <form className="settingsForm" onSubmit={handleSubmit}>
-                        <label>Profile Picture</label>
+                        <label className="writep ">Profile Picture</label>
                         <div className="settingsPP">
                             <img
                                 src={
@@ -98,21 +101,21 @@ export default function Settings() {
                                 onChange={(e) => setFile(e.target.files[0])}
                             />
                         </div>
-                        <label>Username</label>
+                        <label className="writep ">Username</label>
                         <input
                             defaultValue={user.username}
                             type="text"
                             placeholder={user.username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                        <label>Email</label>
+                        <label className="writep ">Email</label>
                         <input
                             defaultValue={user.email}
                             type="email"
                             placeholder={user.email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label>Password</label>
+                        <label className="writep ">Password</label>
                         <input
                             defaultValue={user.password}
                             type="password"

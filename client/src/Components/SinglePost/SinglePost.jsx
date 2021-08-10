@@ -146,8 +146,10 @@ export default function SinglePost() {
                 {updateMode ? (
                     <textarea
                         name="desc"
+                        type="text"
+                        Value={post.desc}
                         className="singlePostDescInput"
-                        value={post.desc}
+                        autoFocus
                         onChange={handleChange}
                     />
                 ) : (

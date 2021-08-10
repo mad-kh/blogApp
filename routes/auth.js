@@ -14,6 +14,8 @@ router.post("/register", async (req, res) => {
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
+            // isAdmin: req.body.isAdmin,
+
             password: hashedPass,
         });
 
@@ -67,5 +69,27 @@ router.post("/login", (req, res) => {
         })
         .catch((err) => console.log(err));
 });
+// router.post("/addPOST", extractToken, (req, res) => {
+//     jwt.verify(req.token, process.env.SECRETKEY, (err, authData) => {
+//         if (err) throw err;
+//         if (authData) {
+//             res.send(authData);
+//             const { title, desc, categories, username } = req.body;
+//             Post.create({ title, desc, categories, username }, (err, data) => {
+//                 if (err) throw err;
+//                 res.status(200).json({
+//                     status: 200,
+//                     msg: "Post added successfully",
+//                     data: data,
+//                 });
+//             });
+//         } else {
+//             res.status(403).json({
+//                 status: 403,
+//                 msg: "unauthorized operation",
+//             });
+//         }
+//     });
+// });
+
 module.exports = router;
-//add post

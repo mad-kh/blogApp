@@ -1,5 +1,11 @@
 .header {
     margin-top: "60px";
+    height: 80%;
+}
+.imgStyle {
+    display: flex;
+    height: 700px;
+    background: cover;
 }
 .headerTitles {
     display: flex;

@@ -67,7 +67,7 @@ router.get("/", async (req, res) => {
         res.status(500).json(err);
     }
 });
-// router.post("/cat", extractToken, async (req, res) => {
+// router.create("/cat", extractToken, async (req, res) => {
 //     if (req.user.isAdmin) {
 //         const newCat = new Category(req.body);
 //         try {

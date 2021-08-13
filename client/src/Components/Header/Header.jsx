@@ -20,7 +20,7 @@ export default function Header() {
                 <Carousel.Item interval={1000}>
                     <img
                         className="d-block w-100 imgStyle"
-                        src="https://images03.nicepage.com/c461c07a441a5d220e8feb1a/fc7cd71c175e52c7b3804df7/fd.jpg"
+                        src="https://images01.nicepage.com/a1389d7bc73adea1e1c1fb7e/68f655c880d7557696e88a2c/pexels-photo-698857.jpeg"
                         alt="First slide"
                     />
 

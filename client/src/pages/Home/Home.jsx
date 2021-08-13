@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../Components/Header/Header";
 import Posts from "../../Components/Posts/Posts";
 import SideBar from "../../Components/SideBar/SideBar";

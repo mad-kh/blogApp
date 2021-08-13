@@ -46,7 +46,6 @@ export default function Settings() {
         try {
             const res = await axios.put("/api/users/" + user._id, updatedUser);
             setSuccess(true);
-            window.location.reload();
         } catch (err) {
             console.log(err);
         }

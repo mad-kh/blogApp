@@ -4,17 +4,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: url("https://image.freepik.com/photos-gratuite/fumee-noire-fond-blanc-conception-du-feu_55716-987.jpg");
-    background-size: cover;
-    background-color: rgb(236, 231, 229);
+    background: url("https://raw.githubusercontent.com/JustFS/mern-project/e33bbb52a7d28ed7d7c69b0233938e38bfa80157/client/public/img/log.svg");
+    background-size: 100%;
+    background-color: black;
 }
 
 .loginTitle {
     font-size: 50px;
+    color: lightcoral;
 }
 
 .loginForm {
     margin-top: 20px;
+    color: black;
     display: flex;
     flex-direction: column;
 }
@@ -37,7 +39,7 @@
 .loginButton {
     margin-top: 20px;
     cursor: pointer;
-    background-color: lightcoral;
+    background-color: lightslategray;
     color: white;
     padding: 10px;
     border: none;

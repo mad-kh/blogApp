@@ -20,6 +20,7 @@ function Login() {
             .post("/api/auth/login", loginData)
             .then((response) => {
                 loginUser(response.data.data);
+                localStorage.setItem("photo", response.data.data.profilePic);
                 window.location.replace("/");
             })
             .catch((err) => {

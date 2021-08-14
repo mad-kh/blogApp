@@ -15,6 +15,7 @@ export default function Settings() {
     // };
     const PF = "http://localhost:5000/images/";
     const user = JSON.parse(localStorage.getItem("user"));
+    const photo = localStorage.getItem("photo");
     const [file, setFile] = useState(null);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ export default function Settings() {
         e.preventDefault();
         // dispatch({ type: "UPDATE_START" });
         const updatedUser = {
-            userId: user._id,
+            // userId: user._id,
             username,
             email,
             password,
@@ -37,6 +38,7 @@ export default function Settings() {
             data.append("name", filename);
             data.append("file", file);
             updatedUser.profilePic = filename;
+            console.log("data", updatedUser.profilePic);
             try {
                 await axios.post("/api/upload", data);
             } catch (err) {
@@ -46,6 +48,8 @@ export default function Settings() {
         try {
             const res = await axios.put("/api/users/" + user._id, updatedUser);
             setSuccess(true);
+            localStorage.setItem("photo", updatedUser.profilePic);
+            window.location.reload();
         } catch (err) {
             console.log(err);
         }
@@ -59,7 +63,6 @@ export default function Settings() {
     };
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user));
-
         console.log(user.profilePic);
     }, [user]);
     return (
@@ -86,7 +89,7 @@ export default function Settings() {
                                 src={
                                     file
                                         ? URL.createObjectURL(file)
-                                        : PF + user.profilePic
+                                        : PF + photo
                                 }
                                 alt={user.username}
                             />

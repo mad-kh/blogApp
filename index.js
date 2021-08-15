@@ -9,7 +9,7 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
-
+const port = process.env.MONGO_URL || 5000;
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
@@ -46,6 +46,9 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/admin", require("./admin"));
+if (Process.env.NODE_ENV === "production") {
+    app.use(exprss.static("client/build"));
+}
 app.listen(process.env.Port, (err) => {
     if (err) throw err;
     console.log(`The DATABASE is connected on port ${process.env.PORT}`);

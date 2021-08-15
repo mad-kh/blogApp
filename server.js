@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
+//const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
@@ -9,23 +9,11 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
-const port = process.env.MONGO_URL || 5000;
-dotenv.config();
+const port = process.env.Port || 5000;
+const url = "mongodb://127.0.0.1:27017/Blogs";
+// dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
-try {
-    mongoose
-        .connect(process.env.MONGO_URL || 5000, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true,
-            useFindAndModify: true,
-        })
-        .then(console.log("Connected to MongoDB"))
-        .catch((err) => console.log(err));
-} catch (err) {
-    console.log(err);
-}
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -46,10 +34,27 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/admin", require("./admin"));
-if (Process.env.NODE_ENV === "production") {
-    app.use(exprss.static("client/build"));
+if (process.env.NODE_ENV === "production") {
+    app.use("/", express.static("client/build"));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client/build/index.html"));
+    });
 }
-app.listen(process.env.Port, (err) => {
+app.listen(port, (err) => {
     if (err) throw err;
-    console.log(`The DATABASE is connected on port ${process.env.PORT}`);
+    console.log(`The DATABASE is connected on port ${port}`);
 });
+try {
+    mongoose
+        .connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true,
+            useFindAndModify: true,
+        })
+        .then(console.log("Connected to MongoDB"))
+        .catch((err) => console.log(err));
+} catch (err) {
+    console.log(err);
+}
